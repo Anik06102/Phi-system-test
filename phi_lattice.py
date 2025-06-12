@@ -2,7 +2,7 @@
 # ===============================================================
 #  φ-Lattice Cognitive Engine  —  Colab-friendly reference impl.
 # ===============================================================
-#  • Pure NumPy / SciPy / TensorFlow (CPU-only OK)
+#  • Pure NumPy / SciPy / TensorFlow / Gudhi (CPU-only OK)
 #  • Supervised MNIST demo  →  nested Laplacian-shell encoder
 #  • Tiny CartPole demo     →  centroid-aware Q-table
 #  • Argparse patched to ignore IPython’s extra -f flags
