@@ -169,7 +169,7 @@ class PhiVDAE(tf.keras.Model):
         self._cache = dict(x=x, x_hat=x_hat, z=z, q=q)
         return x_hat, z_n
 
-    def loss(self):
+    def compute_loss(self):
         x,x_hat,z,q = self._cache["x"], self._cache["x_hat"], self._cache["z"], self._cache["q"]
         # recon
         Lrec = tf.reduce_mean((x_hat-x)**2)
@@ -187,7 +187,7 @@ def train_vdae(X):
         for xb in ds:
             with tf.GradientTape() as tp:
                 _,_ = model(xb, tau=tau)
-                loss = model.loss()
+                loss = model.compute_loss()
             grads = tp.gradient(loss, model.trainable_variables)
             opt.apply_gradients(zip(grads, model.trainable_variables))
         logging.info("AE epoch %d/%d  loss=%.4f τ=%.3f",ep+1,cfg.ae_epochs,loss,tau)
